@@ -74,39 +74,18 @@ const ImageSelector = ({ navigation }) => {
         switch (result.platform) {
         case 'android':
             // android result properties
-            console.log(result);
+            //console.log(result);
             var fields = [result.vibrant, result.dominant, result.average, result.vibrant, result.darkVibrant, result.lightVibrant, result.darkMuted, result.lightMuted, result.muted, result.platform];
             var colors = [];
             for (let i = 0; i < fields.length; i++) {
-                if (fields[i] !== "android" && !colors.includes(fields[i] )){
-                    colors.push(fields[i]);
-                }
-            }
-
-            /*const cbs = colors.map((color) => {
-                <View>
-                    <Text>{color}</Text>
-                    <View style={{backgroundColor: color, width: '20px', height: '20px'}} />
-                </View>
-            })
-            */
-            console.log(colors[0]);
-            setColorBoxes(colors[0]);
-            break
-        case 'web':
-            // web result properties
-            console.log(result);
-            var fields = [result.vibrant, result.dominant, result.vibrant, result.darkVibrant, result.lightVibrant, result.darkMuted, result.lightMuted, result.muted, result.platform];
-            var colors = [];
-            for (let i = 0; i < fields.length; i++) {
-                if (fields[i] !== "web" && !colors.includes(fields[i] )){
+                if (fields[i] !== "android" && !colors.includes(fields[i])){
                     colors.push(fields[i]);
                     //setColorBoxes(fields[i]);
                     console.log(fields[i]);
                 }
             }
 
-            const cbs = colors.map((color) => {
+            var cbs = colors.map((color) => {
                 return (
                 <View>
                     <Text>{color}</Text>
@@ -115,13 +94,57 @@ const ImageSelector = ({ navigation }) => {
                 )
             })
             
-            console.log(cbs);
+            //console.log(cbs);
+            setColorBoxes(cbs);   
+            break
+        case 'web':
+            // web result properties
+            console.log(result);
+            var fields = [result.vibrant, result.dominant, result.vibrant, result.darkVibrant, result.lightVibrant, result.darkMuted, result.lightMuted, result.muted, result.platform];
+            var colors = [];
+            for (let i = 0; i < fields.length; i++) {
+                if (fields[i] !== "web" && !colors.includes(fields[i])){
+                    colors.push(fields[i]);
+                    //setColorBoxes(fields[i]);
+                    console.log(fields[i]);
+                }
+            }
+
+            var cbs = colors.map((color) => {
+                return (
+                <View>
+                    <Text>{color}</Text>
+                    <View style={{backgroundColor: color, width: '55px', height: '30px'}} />
+                </View>
+                )
+            })
+            
+            //console.log(cbs);
             setColorBoxes(cbs);            
             break
         case 'ios':
             // iOS result properties
-            const primaryColor = result.primary
-            console.log(result);
+            var fields = [result.background, result.primary, result.secondary, result.detail];
+            var colors = [];
+            for (let i = 0; i < fields.length; i++) {
+                if (fields[i] !== "ios" && !colors.includes(fields[i])){
+                    colors.push(fields[i]);
+                    //setColorBoxes(fields[i]);
+                    //console.log(fields[i]);
+                }
+            }
+
+            var cbs = colors.map((color) => {
+                return (
+                <View>
+                    <Text>{color}</Text>
+                    <View style={{backgroundColor: color, width: '55px', height: '30px'}} />
+                </View>
+                )
+            })
+            
+            //console.log(cbs);
+            setColorBoxes(cbs);  
             break
         default:
             throw new Error('Unexpected platform key')
